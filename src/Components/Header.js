@@ -5,14 +5,16 @@ import { ReactComponent as Dogs } from "../Assets/dogs.svg";
 
 const Header = () => {
   return (
-    <div className={styles.header}>
-      <nav className="container">
-        <Link to="/">
+    <header className={styles.header}>
+      <nav className={`${styles.nav} container`}>
+        <Link className={styles.logo} aria-label="Dogs - Home" to="/">
           <Dogs />
         </Link>
-        <Link to="/login">Login</Link>
+        <Link className={styles.login} to="/login">
+          Login / Criar
+        </Link>
       </nav>
-    </div>
+    </header>
   );
 };
 
