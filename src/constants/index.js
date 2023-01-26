@@ -4,6 +4,11 @@ export const REGEX_EMAIL =
 
 export const MSG_INVALID_EMAIL = "Preencha um E-mail válido";
 
+export const REGEX_PSWD =
+  /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,20}$/g;
+export const MSG_WEAKER_PSWD =
+  "Senha fraca. Informe uma senha com pelo menos uma letra maiúscula, um número e um caractere especial. ";
+
 //URLS:
 
 export const API_URL = "https://dogsapi.origamid.dev/json";
@@ -28,6 +33,31 @@ export const USER_GET = (token) => {
       headers: {
         Authorization: "Bearer " + token,
       },
+    },
+  };
+};
+
+export const TOKEN_POST_VALIDATE = (token) => {
+  return {
+    url: API_URL + "/jwt-auth/v1/token/validate",
+    options: {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+};
+
+export const USER_POST = (body) => {
+  return {
+    url: API_URL + "/api/user",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     },
   };
 };

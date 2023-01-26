@@ -1,10 +1,19 @@
 import React from "react";
-import { MSG_INVALID_EMAIL, REGEX_EMAIL } from "../constants";
+import {
+  MSG_INVALID_EMAIL,
+  MSG_WEAKER_PSWD,
+  REGEX_EMAIL,
+  REGEX_PSWD,
+} from "../constants";
 
 const types = {
   email: {
     regex: REGEX_EMAIL,
     message: MSG_INVALID_EMAIL,
+  },
+  password: {
+    regex: REGEX_PSWD,
+    message: MSG_WEAKER_PSWD,
   },
 };
 
