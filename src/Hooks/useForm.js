@@ -1,6 +1,7 @@
 import React from "react";
 import {
   MSG_INVALID_EMAIL,
+  MSG_ONLY_NUMBER,
   MSG_WEAKER_PSWD,
   REGEX_EMAIL,
   REGEX_PSWD,
@@ -14,6 +15,10 @@ const types = {
   password: {
     regex: REGEX_PSWD,
     message: MSG_WEAKER_PSWD,
+  },
+  number: {
+    regex: REGEX_PSWD,
+    message: MSG_ONLY_NUMBER,
   },
 };
 

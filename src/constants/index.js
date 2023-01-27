@@ -9,6 +9,8 @@ export const REGEX_PSWD =
 export const MSG_WEAKER_PSWD =
   "Senha fraca. Informe uma senha com pelo menos uma letra maiúscula, um número e um caractere especial. ";
 
+export const REGEX_NUMBER = /^\d+$/;
+export const MSG_ONLY_NUMBER = "Utilize números apenas.";
 //URLS:
 
 export const API_URL = "https://dogsapi.origamid.dev/json";
@@ -59,5 +61,18 @@ export const USER_POST = (body) => {
       },
       body: JSON.stringify(body),
     },
+  };
+};
+
+export const PHOTO_POST = (formData, token) => {
+  return {
+    url: API_URL + "/api/photo",
+    options: {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+    body: formData,
   };
 };
