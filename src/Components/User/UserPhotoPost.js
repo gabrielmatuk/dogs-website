@@ -10,10 +10,10 @@ import { useNavigate } from "react-router-dom";
 
 const UserPhotoPost = () => {
   const nome = useForm();
-  const peso = useForm("number");
-  const idade = useForm("number");
-
+  const peso = useForm();
+  const idade = useForm();
   const [img, setImg] = React.useState({});
+
   const { data, error, loading, request } = useFetch();
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const UserPhotoPost = () => {
     if (data) navigate("/conta");
   }, [data, navigate]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("img", img.raw);
@@ -29,9 +29,12 @@ const UserPhotoPost = () => {
     formData.append("peso", peso.value);
     formData.append("idade", idade.value);
 
+    for (var key of formData.entries()) {
+      console.log(key[0] + ", " + key[1]);
+    }
     const token = window.localStorage.getItem("token");
     const { url, options } = PHOTO_POST(formData, token);
-    request(url, options);
+    await request(url, options);
   };
 
   const handleImgChange = ({ target }) => {
