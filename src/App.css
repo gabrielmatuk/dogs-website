@@ -52,6 +52,10 @@ a {
   margin: 0 auto;
 }
 
+.mainContainer {
+  margin-top: 4rem;
+}
+
 .title::after {
   content: "";
   display: block;
