@@ -72,8 +72,8 @@ export const PHOTO_POST = (formData, token) => {
       headers: {
         Authorization: "Bearer " + token,
       },
+      body: formData,
     },
-    body: formData,
   };
 };
 
@@ -116,6 +116,44 @@ export const PHOTO_DELETE = (id) => {
     url: `${API_URL}/api/photo/${id}`,
     options: {
       method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + window.localStorage.getItem("token"),
+      },
+    },
+  };
+};
+
+export const PASSWORD_LOST = (body) => {
+  return {
+    url: API_URL + "/api/password/lost",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    },
+  };
+};
+
+export const PASSWORD_RESET = (body) => {
+  return {
+    url: API_URL + "/api/password/reset",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    },
+  };
+};
+
+export const STATS_GET = () => {
+  return {
+    url: API_URL + "/api/stats",
+    options: {
+      method: "GET",
       headers: {
         Authorization: "Bearer " + window.localStorage.getItem("token"),
       },

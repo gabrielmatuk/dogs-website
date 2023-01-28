@@ -9,21 +9,34 @@ import { ReactComponent as Triste } from "../../Assets/cara-triste.svg";
 
 const FeedPhotos = ({ page, user, setModalPhoto, setInifinite }) => {
   const { data, error, loading, request } = useFetch();
+  const [finished, setFinished] = React.useState(false);
+  const [content, setContent] = React.useState(true);
 
   React.useEffect(() => {
     const fetchPhotos = async () => {
       const total = 3;
       const { url, options } = PHOTOS_GET({ page, total, user });
       const { res, json } = await request(url, options);
-      if (res && res.ok && json.length < total) setInifinite(false);
+      console.log(json);
+      if (res && res.ok && json.length < total) {
+        setInifinite(false);
+        setFinished(true);
+      }
+      if (json.length === 0) {
+        setContent(false);
+      }
     };
 
     fetchPhotos();
-  }, [request, user, page, setInifinite]);
+  }, [request, user, page, setInifinite, setContent]);
 
   if (error) return <Error error={error} />;
   if (loading) return <Loading />;
-  if (data && user && data.length === 0) {
+
+  if (data && !user && finished) {
+    return <p className={styles.nofeed}>Você já viu todas as fotos do Feed.</p>;
+  }
+  if (data && user && !content) {
     return (
       <div className={styles.nophoto}>
         <Triste className={styles.imgSad} />

@@ -25,9 +25,18 @@
 .imgSad{
     opacity: 0.2;
 }
+
 .nophoto p{
     margin-top: 3.5rem;
     opacity: 0.8;
     font-weight: bold;
     font-family: var(--type-second);
+}
+
+.nofeed{
+  text-align: center;
+  opacity: 0.8;
+  font-weight: bold;
+  font-family: var(--type-second);
+  padding-bottom: 1rem;
 }
