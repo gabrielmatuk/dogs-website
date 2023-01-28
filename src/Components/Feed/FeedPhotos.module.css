@@ -11,3 +11,23 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+.nophoto{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.imgSad{
+    opacity: 0.2;
+}
+.nophoto p{
+    margin-top: 3.5rem;
+    opacity: 0.8;
+    font-weight: bold;
+    font-family: var(--type-second);
+}
